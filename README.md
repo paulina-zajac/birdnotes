@@ -1,4 +1,4 @@
-##BirdNotes
+## BirdNotes
 
 ### About
 BirdNotes is an application for keeping bird observations. It allows you to add, edit and delete observations.
