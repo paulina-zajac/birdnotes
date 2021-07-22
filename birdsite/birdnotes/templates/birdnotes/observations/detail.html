@@ -1,0 +1,50 @@
+{% extends "birdnotes/base.html" %}
+{% load static %}
+{% block title %}Observation{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="text-center section-title">Observation</h2>
+        <hr class="mx-auto" style="width:10%">
+        <nav class="d-flex justify-content-end" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'birdnotes:observations_list' %}">My Bird Notes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Observation</li>
+            </ol>
+        </nav>
+
+        <div class="row g-5 mt-1">
+
+            <div class="col-lg-8">
+                <div class="card mb-3 observation-detail border-0" style="width:100%;">
+                    <div class="card-body">
+                        <h5 class="card-title observation-title">{{observation.species}}</h5>
+                        <hr class="divider">
+                        <p class="card-text">
+                        <ul>
+                            <li><strong>Species</strong>: {{observation.species}}</li>
+                            <li><strong>Appearance</strong>: {{observation.appearance}}</li>
+                            <li><strong>Date</strong>: {{observation.time}}</li>
+                            <li><strong>Place</strong>: {{observation.place}}</li>
+                            <li><strong>Number of birds</strong>: {{observation.number}}</li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <h4>Detailed description</h4>
+                    <p>{{observation.description}}</p>
+                </div>
+                <a href="{% url 'birdnotes:edit_observation' observation.id %}">
+                    <button class="btn standard-btn text-white">EDIT</button>
+                </a>
+                <a href="{% url 'birdnotes:remove_observation' observation.id %}">
+                    <button class="btn btn-danger text-white">REMOVE</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+

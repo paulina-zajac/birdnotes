@@ -1,0 +1,41 @@
+{% extends "birdnotes/base.html" %}
+{% load static %}
+{% block title %}New Observation{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="text-center section-title">Add observation</h2>
+        <p class="text-center section-sub-title">Add your observation here.</p>
+        <hr class="mx-auto" style="width:10%">
+
+
+        <nav class="d-flex justify-content-end" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">My Bird Notes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add observation</li>
+            </ol>
+        </nav>
+
+        <div class="d-flex justify-content-center">
+            <div class="card p-3 observation-detail border-0">
+                <div class="card-body">
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="form-floating mb-3">
+                            {{field}}
+                            {{field.label_tag}}
+                        </div>
+                        {% endfor %}
+                        <input type="submit" value="ADD" class="btn standard-btn text-white">
+                    </form>
+                </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "birdnotes/base.html" %}
+{% load static %}
+{% block title %}New Observation{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h2 class="text-center section-title">Remove observation</h2>
+        <p class="text-center section-sub-title">Are you sure you want to delete the selected observation?</p>
+
+        <div class="row ">
+            <form action="." method="post" class="add-form col-md-5 ">
+                {% csrf_token %}
+                <input type="submit" value="Remove" name="remove" class="btn btn-danger text-white">
+                <input type="submit" value="Cancel" name="cancel" class="btn standard-btn text-white">
+            </form>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
