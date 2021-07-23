@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Observation
+from .models import Observation, BirdSpecies
 
 # Register your models here.
 @admin.register(Observation)
@@ -10,3 +10,9 @@ class ObservationAdmin(admin.ModelAdmin):
     raw_id_fields = ('person',)
     date_hierarchy = 'time'
     ordering = ('time',)
+
+@admin.register(BirdSpecies)
+class BirdSpeciesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'latin_name', 'polish_name', 'category', 'state')
+    list_filter = ('category',)
+    ordering = ('polish_name',)

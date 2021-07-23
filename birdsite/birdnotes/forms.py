@@ -6,6 +6,7 @@ class ObservationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
+
     class Meta:
         model = Observation
         fields = ('species', 'appearance', 'place', 'time', 'number', 'description')
@@ -27,3 +28,4 @@ class ObservationForm(forms.ModelForm):
             'number': forms.NumberInput(attrs={'class': 'form-control','placeholder':'x'}),
             'description': forms.Textarea(attrs={'class': 'form-control','placeholder':'x', 'style': 'height:200px;'})
         }
+

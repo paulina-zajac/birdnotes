@@ -33,3 +33,16 @@ class Observation(models.Model):
     def save(self, *args, **kwargs):
         self.slug = '-'.join((slugify(self.species), slugify(self.place)))
         super(Observation, self).save(*args, **kwargs)
+
+
+class BirdSpecies(models.Model):
+    latin_name = models.CharField(max_length=250)
+    polish_name = models.CharField(max_length=250)
+    category = models.CharField(max_length=10, blank=True)
+    state = models.CharField(max_length=10, blank=True)
+
+    class Meta:
+        ordering = ('polish_name',)
+
+    def __str__(self):
+        return self.polish_name
