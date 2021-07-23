@@ -1,4 +1,4 @@
-from .models import Observation
+from .models import Observation, BirdSpecies
 from django import forms
 
 
@@ -20,8 +20,10 @@ class ObservationForm(forms.ModelForm):
             'description': 'detailed description'
         }
 
+        species = forms.ModelChoiceField(queryset=BirdSpecies.objects.all())
+
         widgets = {
-            'species': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'x' }),
+            'species': forms.Select(attrs={'class': 'form-control'}),
             'appearance': forms.Textarea(attrs={'class': 'form-control','placeholder':'x', 'style': 'height:200px;'}),
             'place': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'x'}),
             'time': forms.DateTimeInput(attrs={'class': 'form-control','placeholder':'x'}),

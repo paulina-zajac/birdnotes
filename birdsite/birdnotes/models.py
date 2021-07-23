@@ -5,9 +5,22 @@ from django.urls import reverse
 from django.utils.text import slugify
 
 
+class BirdSpecies(models.Model):
+    latin_name = models.CharField(max_length=250)
+    polish_name = models.CharField(max_length=250)
+    category = models.CharField(max_length=10, blank=True)
+    state = models.CharField(max_length=10, blank=True)
+
+    class Meta:
+        ordering = ('polish_name',)
+
+    def __str__(self):
+        return self.polish_name
+
 # Create your models here.
 class Observation(models.Model):
-    species = models.CharField(max_length=250, blank=True)
+    # species = models.CharField(max_length=250, blank=True)
+    species = models.ForeignKey(BirdSpecies, on_delete=models.CASCADE)
     appearance = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='time')
     place = models.CharField(max_length=250)
@@ -20,7 +33,7 @@ class Observation(models.Model):
         ordering = ('-time',)
 
     def __str__(self):
-        return self.species
+        return self.species.polish_name
 
     def get_absolute_url(self):
         return reverse('birdnotes:observation_detail',
@@ -31,18 +44,8 @@ class Observation(models.Model):
                              ])
 
     def save(self, *args, **kwargs):
-        self.slug = '-'.join((slugify(self.species), slugify(self.place)))
+        self.slug = '-'.join((slugify(self.species.polish_name), slugify(self.place)))
         super(Observation, self).save(*args, **kwargs)
 
 
-class BirdSpecies(models.Model):
-    latin_name = models.CharField(max_length=250)
-    polish_name = models.CharField(max_length=250)
-    category = models.CharField(max_length=10, blank=True)
-    state = models.CharField(max_length=10, blank=True)
 
-    class Meta:
-        ordering = ('polish_name',)
-
-    def __str__(self):
-        return self.polish_name

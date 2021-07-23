@@ -29,6 +29,7 @@
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title observation-title">{{obs.species}}</h5>
+                                    <p class="text-muted">{{obs.species.latin_name}}</p>
                                     <div class="card-text">
                                         <p><b>Appearance:</b> {{obs.appearance|truncatewords:8|linebreaks}}</p>
                                         <p><b>Place:</b> {{obs.place}}</p>

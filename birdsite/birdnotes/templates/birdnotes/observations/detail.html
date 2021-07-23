@@ -18,11 +18,11 @@
             <div class="col-lg-8">
                 <div class="card mb-3 observation-detail border-0" style="width:100%;">
                     <div class="card-body">
-                        <h5 class="card-title observation-title">{{observation.species}}</h5>
+                        <h5 class="card-title observation-title">{{observation.species.polish_name}}</h5>
+                        <p class="text-muted"> {{observation.species.latin_name}}</p>
                         <hr class="divider">
                         <p class="card-text">
                         <ul>
-                            <li><strong>Species</strong>: {{observation.species}}</li>
                             <li><strong>Appearance</strong>: {{observation.appearance}}</li>
                             <li><strong>Date</strong>: {{observation.time}}</li>
                             <li><strong>Place</strong>: {{observation.place}}</li>

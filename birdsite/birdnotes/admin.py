@@ -4,7 +4,7 @@ from .models import Observation, BirdSpecies
 # Register your models here.
 @admin.register(Observation)
 class ObservationAdmin(admin.ModelAdmin):
-    list_display = ('id','species', 'time','place', 'person',)
+    list_display = ('species','time','place', 'person',)
     list_filter = ('time', 'person')
     prepopulated_fields = {'slug': ('species','place')}
     raw_id_fields = ('person',)
