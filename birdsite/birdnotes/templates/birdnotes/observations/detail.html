@@ -27,15 +27,19 @@
             <div class="col-lg-8">
                 <div class="card mb-3 observation-detail border-0" style="width:100%;">
                     <div class="card-body">
-                        <h5 class="card-title observation-title">{{observation.species.polish_name}}</h5>
+                        <h5 class="card-title fs-2 observation-title">{{observation.species.polish_name}}</h5>
                         <p class="text-muted"> {{observation.species.latin_name}}</p>
                         <hr class="divider">
                         <p class="card-text">
-                        <ul>
+                        <ul class="list-unstyled lh-lg">
                             <li><strong>Appearance</strong>: {{observation.appearance}}</li>
+                            <li><strong>Gender</strong>: {{observation.Gender}}</li>
+                            <li><strong>Behaviour</strong>: {{observation.behaviour}}</li>
                             <li><strong>Date</strong>: {{observation.time}}</li>
                             <li><strong>Place</strong>: {{observation.place}}</li>
+                            <li><strong>weather</strong>: {{observation.weather}}</li>
                             <li><strong>Number of birds</strong>: {{observation.number}}</li>
+                            <li><strong>Bird Category</strong>: {{observation.species.category}}</li>
                         </ul>
                         </p>
                     </div>

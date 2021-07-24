@@ -6,6 +6,12 @@ from django.utils.text import slugify
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
+GENDER_CHOISES = (
+    ('unknown', 'unknown'),
+    ('male', 'male'),
+    ('female', 'female'),
+)
+
 class BirdSpecies(models.Model):
     latin_name = models.CharField(max_length=250)
     polish_name = models.CharField(max_length=250)
@@ -18,15 +24,18 @@ class BirdSpecies(models.Model):
     def __str__(self):
         return self.polish_name
 
+
 # Create your models here.
 class Observation(models.Model):
-    # species = models.CharField(max_length=250, blank=True)
     species = models.ForeignKey(BirdSpecies, on_delete=models.CASCADE)
     appearance = models.TextField()
     slug = models.SlugField(max_length=250, unique_for_date='time')
+    number = models.IntegerField(default=1,validators=[MaxValueValidator(100), MinValueValidator(1)])
+    gender = models.CharField(max_length=250, choices=GENDER_CHOISES, default='unknown')
+    behaviour = models.TextField(blank=True)
     place = models.CharField(max_length=250)
     time = models.DateTimeField(default=timezone.now)
-    number = models.IntegerField(default=1,validators=[MaxValueValidator(100), MinValueValidator(1)])
+    weather = models.CharField(max_length=250, blank=True)
     description = models.TextField(blank=True)
     person = models.ForeignKey(User, on_delete=models.CASCADE, related_name='observations', blank=True)
 

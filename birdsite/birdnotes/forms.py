@@ -15,14 +15,17 @@ class ObservationForm(forms.ModelForm):
 
     class Meta:
         model = Observation
-        fields = ('species', 'appearance', 'place', 'time', 'number', 'description')
+        fields = ('species', 'appearance','number','gender','behaviour', 'place', 'time', 'weather' , 'description')
 
         labels = {
             'species': 'species',
             'appearance' : 'appearance',
+            'gender': 'gender',
+            'behaviour': 'behaviour',
             'place' : 'where',
             'time': 'when',
             'number': 'number of birds',
+            'weather': 'weather',
             'description': 'detailed description'
         }
 
@@ -31,9 +34,12 @@ class ObservationForm(forms.ModelForm):
         widgets = {
             'species': forms.Select(attrs={'class': 'form-control'}),
             'appearance': forms.Textarea(attrs={'class': 'form-control','placeholder':'x', 'style': 'height:200px;'}),
+            'gender': forms.Select(attrs={'class': 'form-control'}),
+            'number': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'x'}),
+            'behaviour': forms.Textarea(attrs={'class': 'form-control',  'placeholder': 'x'}),
             'place': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'x'}),
             'time': forms.DateTimeInput(attrs={'class': 'form-control','placeholder':'x'}),
-            'number': forms.NumberInput(attrs={'class': 'form-control','placeholder':'x'}),
+            'weather': forms.TextInput(attrs={'class': 'form-control','placeholder':'x'}),
             'description': forms.Textarea(attrs={'class': 'form-control','placeholder':'x', 'style': 'height:200px;'})
         }
 
