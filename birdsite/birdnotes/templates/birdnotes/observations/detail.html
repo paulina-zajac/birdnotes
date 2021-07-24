@@ -2,10 +2,19 @@
 {% load static %}
 {% block title %}Observation{% endblock %}
 {% block content %}
+{% load bootstrap5 %}
+
+<!--{% bootstrap_css %}-->
+<!--{% bootstrap_javascript %}-->
 <section class="section">
     <div class="container">
         <h2 class="text-center section-title">Observation</h2>
         <hr class="mx-auto" style="width:10%">
+        {% if messages %}
+            {% for message in messages %}
+                    {% bootstrap_messages %}
+            {% endfor %}
+        {% endif %}
         <nav class="d-flex justify-content-end" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{% url 'birdnotes:observations_list' %}">My Bird Notes</a></li>

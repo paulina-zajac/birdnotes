@@ -2,12 +2,17 @@
 {% load static %}
 {% block title %}New Observation{% endblock %}
 {% block content %}
+{% load bootstrap5 %}
 <section class="section">
     <div class="container">
         <h2 class="text-center section-title">Add observation</h2>
         <p class="text-center section-sub-title">Add your observation here.</p>
         <hr class="mx-auto" style="width:10%">
-
+        {% if messages %}
+        {% for message in messages %}
+        {% bootstrap_messages %}
+        {% endfor %}
+        {% endif %}
 
         <nav class="d-flex justify-content-end" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -22,10 +27,13 @@
                     <form action="." method="post">
                         {% csrf_token %}
                         {% for field in form %}
-                        <div class="form-floating mb-3">
-                            {{field}}
-                            {{field.label_tag}}
-                        </div>
+                            <div class="form-floating mb-3">
+                                {{field}}
+                                {{field.label_tag}}
+                            </div>
+                            {% for error in field.errors%}
+                            <p class="text-danger">{{error}}</p>
+                            {% endfor %}
                         {% endfor %}
                         <input type="submit" value="ADD" class="btn standard-btn text-white">
                     </form>

@@ -7,6 +7,12 @@ class ObservationForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.label_suffix = ""
 
+    def clean_number(self):
+        number = self.cleaned_data['number']
+        if number <= 0:
+            raise forms.ValidationError('Minimum number of birds is 1')
+        return number
+
     class Meta:
         model = Observation
         fields = ('species', 'appearance', 'place', 'time', 'number', 'description')

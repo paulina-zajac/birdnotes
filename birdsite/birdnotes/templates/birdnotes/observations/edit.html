@@ -22,10 +22,13 @@
                     <form action="." method="post">
                         {% csrf_token %}
                         {% for field in edit_form %}
-                        <div class="form-floating mb-3">
-                            {{field}}
-                            {{field.label_tag}}
-                        </div>
+                            <div class="form-floating mb-3">
+                                {{field}}
+                                {{field.label_tag}}
+                            </div>
+                            {% for error in field.errors%}
+                            <p class="text-danger">{{error}}</p>
+                            {% endfor %}
                         {% endfor %}
                         <input type="submit" value="SAVE" class="btn standard-btn text-white">
                     </form>

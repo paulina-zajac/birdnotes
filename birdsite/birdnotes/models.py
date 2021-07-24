@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.text import slugify
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class BirdSpecies(models.Model):
@@ -25,9 +26,9 @@ class Observation(models.Model):
     slug = models.SlugField(max_length=250, unique_for_date='time')
     place = models.CharField(max_length=250)
     time = models.DateTimeField(default=timezone.now)
-    number = models.IntegerField()
+    number = models.IntegerField(default=1,validators=[MaxValueValidator(100), MinValueValidator(1)])
     description = models.TextField(blank=True)
-    person = models.ForeignKey(User, on_delete=models.CASCADE, related_name='observations')
+    person = models.ForeignKey(User, on_delete=models.CASCADE, related_name='observations', blank=True)
 
     class Meta:
         ordering = ('-time',)
