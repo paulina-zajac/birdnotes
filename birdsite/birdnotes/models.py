@@ -37,6 +37,7 @@ class Observation(models.Model):
     time = models.DateTimeField(default=timezone.now)
     weather = models.CharField(max_length=250, blank=True)
     description = models.TextField(blank=True)
+    photo = models.ImageField(upload_to='media/',blank=True)
     person = models.ForeignKey(User, on_delete=models.CASCADE, related_name='observations', blank=True)
 
     class Meta:

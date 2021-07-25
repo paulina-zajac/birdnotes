@@ -18,7 +18,7 @@ def observation_detail(request, year, month, day, observation):
 
 def add_observation(request):
     if request.method == 'POST':
-        form = ObservationForm(data=request.POST)
+        form = ObservationForm(request.POST, request.FILES)
         if form.is_valid():
             observation = form.save(commit=False)
             observation.person = request.user
@@ -33,7 +33,7 @@ def add_observation(request):
 def edit_observation(request, id):
     if request.method == "POST":
         observation = get_object_or_404(Observation, id=id)
-        edit_form = ObservationForm(data=request.POST, instance=observation)
+        edit_form = ObservationForm(request.POST, request.FILES, instance=observation)
         if edit_form.is_valid():
             edit_form.save()
             return redirect(observation)

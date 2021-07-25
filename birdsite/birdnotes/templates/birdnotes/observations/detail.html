@@ -11,9 +11,9 @@
         <h2 class="text-center section-title">Observation</h2>
         <hr class="mx-auto" style="width:10%">
         {% if messages %}
-            {% for message in messages %}
-                    {% bootstrap_messages %}
-            {% endfor %}
+        {% for message in messages %}
+        {% bootstrap_messages %}
+        {% endfor %}
         {% endif %}
         <nav class="d-flex justify-content-end" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -24,7 +24,7 @@
 
         <div class="row g-5 mt-1">
 
-            <div class="col-lg-8">
+            <div class="col-lg-7">
                 <div class="card mb-3 observation-detail border-0" style="width:100%;">
                     <div class="card-body">
                         <h5 class="card-title fs-2 observation-title">{{observation.species.polish_name}}</h5>
@@ -55,6 +55,15 @@
                     <button class="btn btn-danger text-white">REMOVE</button>
                 </a>
             </div>
+            {% if observation.photo %}
+            <div class="col-lg-5">
+                <div class="card mb-3 observation-detail border-0" style="width:100%;">
+                    <div class="card-body" style="width:100%;height:100%;">
+                        <img class="img-fluid rounded" src="{{ observation.photo.url }}" alt="photo">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 

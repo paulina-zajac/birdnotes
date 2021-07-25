@@ -19,7 +19,7 @@
         <div class="d-flex justify-content-center">
             <div class="card p-3 observation-detail border-0">
                 <div class="card-body">
-                    <form action="." method="post">
+                    <form action="." method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% for field in edit_form %}
                             <div class="form-floating mb-3">
