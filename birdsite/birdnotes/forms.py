@@ -45,4 +45,3 @@ class ObservationForm(forms.ModelForm):
             'photo': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'photo'}),
 
         }
-

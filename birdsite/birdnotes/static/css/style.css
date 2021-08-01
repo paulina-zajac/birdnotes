@@ -1,5 +1,5 @@
 body{
-    background-color:#f7fbfe;
+    background-color: #f7fbfe;
     color:#444444;
     font-family: 'Open Sans', sans-serif;
     
@@ -53,9 +53,26 @@ a, a:hover, a:visited, a:active {
        
    }
 
+.light-btn{
+ border-color: #3498db;
+ color: #3498db;
+}
+
+.light-btn:hover{
+ background-color: #3498db;
+ border-color: #3498db;
+ color: white;
+}
+
 .standard-btn:hover{
        background-color: #2387ca;
    }
+
+.menu-item:hover{
+       background-color: #2387ca;
+       color: white;
+}
+
 
 hr{
     border: 1px solid #2387ca;
@@ -85,6 +102,12 @@ hr{
     width: 50%;
 
 }
+
+ .footer{
+     background-color: #e9f4fc;
+
+
+ }
 
 @media only screen and (max-width: 600px) {
     .observation-detail {  
