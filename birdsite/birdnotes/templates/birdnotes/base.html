@@ -40,7 +40,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li class="dropdown-item menu-item disabled">You are signed in as {{request.user}}.</li>
-            <li><a class="dropdown-item menu-item" href="#">Log out</a></li>
+            <li><a class="dropdown-item menu-item" href="{% url 'birdnotes:logout' %}">Log out</a></li>
           </ul>
         </li>
             {% else %}

@@ -1,0 +1,28 @@
+{% extends "birdnotes/base.html" %}
+{% load static %}
+{% block title %}Observation{% endblock %}
+{% block content %}
+{% load bootstrap5 %}
+
+<section class="section" style="height:80vh;">
+    <div class="container">
+        <h2 class="text-center section-title">Log out</h2>
+        <hr class="mx-auto" style="width:10%">
+        {% if messages %}
+        {% for message in messages %}
+        {% bootstrap_messages %}
+        {% endfor %}
+        {% endif %}
+        <nav class="d-flex justify-content-end" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'birdnotes:observations_list' %}">My Bird Notes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Logged out</li>
+            </ol>
+        </nav>
+        <h5 class="text-center">You have been successfully logged out.</h5>
+        <p class="text-center">Thank you for using the app!</p>
+
+    </div>
+</section>
+{% endblock %}
+
