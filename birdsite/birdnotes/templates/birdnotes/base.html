@@ -34,29 +34,23 @@
           </li>
             {% if request.user.is_authenticated %}
 <!--            <li class="nav-item nav-link">{{request.user}}</li>-->
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Account
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li class="dropdown-item menu-item disabled">You are signed in as {{request.user}}.</li>
-            <li><a class="dropdown-item menu-item" href="{% url 'birdnotes:logout' %}">Log out</a></li>
-          </ul>
-        </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li class="dropdown-item menu-item disabled">You are signed in as {{request.user}}.</li>
+              <li><a class="dropdown-item menu-item" href="{% url 'birdnotes:logout' %}">Log out</a></li>
+            </ul>
+          </li>
             {% else %}
             <li>
-                <div class="btn-group ms-2" role="group" aria-label="Basic checkbox toggle button group">
-                  <a href="{% url 'birdnotes:login' %}">
-                    <input type="button" class="btn-check" id="btncheck1" autocomplete="off">
-                  <label class="btn btn-outline-primary light-btn" for="btncheck1">Sign In</label>
-                  </a>
-                  <a href="#">
-                  <input type="button" class="btn-check" id="btncheck2" autocomplete="off">
-                  <label class="btn btn-outline-primary light-btn" for="btncheck2">Sign Up</label>
-                  </a>
-                </div>
+              <div class="btn-group">
+                <a href="{% url 'birdnotes:login' %}" class="btn btn-outline-primary light-btn" aria-current="page">Sign In</a>
+                <a href="{% url 'birdnotes:register' %}" class="btn btn-outline-primary light-btn">Sign Up</a>
+              </div>
             </li>
-            {% endif %}
+          {% endif %}
         </ul>
       </div>
     </div>

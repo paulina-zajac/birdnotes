@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Observation
-from .forms import ObservationForm
+from .forms import ObservationForm, UserRegistrationForm
 from django.contrib import messages
 
 
@@ -52,3 +52,16 @@ def remove_observation(request, id):
     elif request.method == 'POST' and 'cancel' in request.POST:
         return redirect(observation)
     return render(request, 'birdnotes/observations/remove.html', {})
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            new_user = user_form.save(commit=False)
+            new_user.set_password(user_form.cleaned_data['password2'])
+            new_user.save()
+            return render(request, 'birdnotes/register_done.html', {'new_user': new_user})
+    else:
+        user_form = UserRegistrationForm()
+    return render(request, 'birdnotes/register.html', {'user_form': user_form})

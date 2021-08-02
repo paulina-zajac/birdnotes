@@ -127,5 +127,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 LOGIN_REDIRECT_URL = 'birdnotes:observations_list'
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+LOGIN_URL = 'birdnotes:login'
+LOGOUT_URL = 'birdnotes:logout'

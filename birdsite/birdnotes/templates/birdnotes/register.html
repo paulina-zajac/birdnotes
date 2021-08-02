@@ -6,7 +6,7 @@
 
 <section class="section" style="height:80vh;">
     <div class="container">
-        <h2 class="text-center section-title">Log in</h2>
+        <h2 class="text-center section-title">Register new account</h2>
         <hr class="mx-auto" style="width:10%">
         {% if messages %}
         {% for message in messages %}
@@ -16,32 +16,33 @@
         <nav class="d-flex justify-content-end" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{% url 'birdnotes:observations_list' %}">My Bird Notes</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Login</li>
+                <li class="breadcrumb-item active" aria-current="page">Register</li>
             </ol>
         </nav>
 
         {% if form.errors %}
         <p>
-            Your username and password didn't match.
+
             Please try again.
         </p>
         {% else %}
-        
         {% endif %}
         <div class="login-form row justify-content-center">
             <div class="col-lg-4">
-                <p>Please, use the following form to log in:</p>
-            <form action="{% url 'birdnotes:login' %}" method="post">
+                <p>Please, use the following form to register your account: </p>
+            <form action="." method="post">
                 {% csrf_token %}
-                {% for field in form %}
+                {% for field in user_form %}
                 <div class="form-floating mb-3">
                     <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" class="form-control" id="id_{{ field.name }}" placeholder="{{ field.name }}">
                     <label for="id_{{ field.name }}">{{field.label}}</label>
                 </div>
+                    {% for error in field.errors%}
+                    <p class="text-danger">{{error}}</p>
+                    {% endfor %}
                 {% endfor %}
                 <input type="hidden" name="next" value="{{ next }}"/>
-                <p><input class="btn btn-outline-yellow light-btn w-100" type="submit" value="Log in"></p>
-                <p>Don`t have an account? Don`t worry. Just <a class="btn btn-link btn-sm" href="{% url 'birdnotes:register' %}">sign up here.</a></p>
+                <p><input class="btn btn-outline-yellow light-btn w-100" type="submit" value="Register account"></p>
             </form>
                 </div>
         </div>

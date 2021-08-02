@@ -1,5 +1,6 @@
 from .models import Observation, BirdSpecies
 from django import forms
+from django.contrib.auth.models import User
 
 
 class ObservationForm(forms.ModelForm):
@@ -45,3 +46,18 @@ class ObservationForm(forms.ModelForm):
             'photo': forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'photo'}),
 
         }
+
+
+class UserRegistrationForm(forms.ModelForm):
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'email', 'password', 'password2')
+
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password'] != cd['password2']:
+            raise forms.ValidationError('The passwords don`t match.')
+        return cd['password2']
