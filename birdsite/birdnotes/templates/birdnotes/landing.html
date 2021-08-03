@@ -1,0 +1,25 @@
+{% extends "birdnotes/base.html" %}
+{% load static %}
+{% block title %}Observation{% endblock %}
+{% block content %}
+{% load bootstrap5 %}
+
+<section class="section" style="height:100vh;">
+
+    <div class="img-fluid" style="background-image:url({% static "images/bird.jpg" %});height:100vh;background-repeat:no-repeat;background-size:100%;">
+        <div class="container h-75">
+        <div class="row h-100 align-items-center">
+        <div class="col-md-6"> 
+        </div>
+            <div class="col-md-6 text-center landing-header"> 
+            <h2 class="display-1 text-white text-center mb-0"><span style="color:#3195bd;">BirdNotes</span></h2>
+            <h2 class=" text-white text-center fst-italic">birds observations home</h2>
+            <a href="{% url 'birdnotes:register' %}"> <button class="btn mt-4 light-btn landing-button">GET STARTED</button></a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+

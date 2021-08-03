@@ -2,9 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Observation
 from .forms import ObservationForm, UserRegistrationForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required
 def observations_list(request):
     observations = Observation.objects.all()
     return render(request, 'birdnotes/observations/list.html', {'observations': observations})
@@ -65,3 +67,7 @@ def register(request):
     else:
         user_form = UserRegistrationForm()
     return render(request, 'birdnotes/register.html', {'user_form': user_form})
+
+
+def landing(request):
+    return render(request, 'birdnotes/landing.html', {})
