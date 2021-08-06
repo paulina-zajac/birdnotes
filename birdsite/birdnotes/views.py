@@ -10,7 +10,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 @login_required
 def observations_list(request):
     object_lists = Observation.objects.all()
-    paginator = Paginator(object_lists, 8)
+    paginator = Paginator(object_lists, 6)
     page = request.GET.get('page')
     try:
         observations = paginator.page(page)
