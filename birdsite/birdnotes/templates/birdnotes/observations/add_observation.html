@@ -35,8 +35,13 @@
                             <p class="text-danger">{{error}}</p>
                             {% endfor %}
                         {% endfor %}
-                        <input type="submit" value="ADD" class="btn standard-btn text-white">
+                        <input type="submit" value="ADD" class="btn standard-btn px-3 text-white">
+
                     </form>
+                    <a href="{% url 'birdnotes:observations_list' %}">
+                        <button class="btn mt-2 standard-btn text-white">BACK</button>
+                    </a>
+
                 </div>
                 </a>
 

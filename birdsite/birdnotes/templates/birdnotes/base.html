@@ -33,7 +33,6 @@
             <a class="nav-link" href="#">Contact</a>
           </li>
             {% if request.user.is_authenticated %}
-<!--            <li class="nav-item nav-link">{{request.user}}</li>-->
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Account
@@ -43,17 +42,17 @@
               <li><a class="dropdown-item menu-item" href="{% url 'birdnotes:logout' %}">Log out</a></li>
             </ul>
           </li>
-            {% else %}
-            <li>
-              <div class="btn-group">
-                <a href="{% url 'birdnotes:login' %}" class="btn btn-outline-primary light-btn" aria-current="page">Sign In</a>
-                <a href="{% url 'birdnotes:register' %}" class="btn btn-outline-primary light-btn">Sign Up</a>
-              </div>
-            </li>
           {% endif %}
         </ul>
       </div>
     </div>
+      {% if not request.user.is_authenticated %}
+              <div class="btn-group me-2">
+                <a href="{% url 'birdnotes:login' %}" class="btn btn-outline-primary light-btn" aria-current="page">Sign In</a>
+                <a href="{% url 'birdnotes:register' %}" class="btn btn-outline-primary light-btn">Sign Up</a>
+              </div>
+    {% endif %}
+
   </nav>
 
   {% block content %}

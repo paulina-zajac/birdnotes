@@ -3,12 +3,21 @@ from .models import Observation
 from .forms import ObservationForm, UserRegistrationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-# Create your views here.
+
 @login_required
 def observations_list(request):
-    observations = Observation.objects.all()
+    object_lists = Observation.objects.all()
+    paginator = Paginator(object_lists, 8)
+    page = request.GET.get('page')
+    try:
+        observations = paginator.page(page)
+    except PageNotAnInteger:
+        observations = paginator.page(1)
+    except EmptyPage:
+        observations = paginator.page(paginator.num_pages)
     return render(request, 'birdnotes/observations/list.html', {'observations': observations})
 
 
@@ -42,7 +51,7 @@ def edit_observation(request, id):
     else:
         observation = get_object_or_404(Observation, id=id)
         edit_form = ObservationForm(instance=observation)
-    return render(request, 'birdnotes/observations/edit.html', {'edit_form': edit_form})
+    return render(request, 'birdnotes/observations/edit.html', {'edit_form': edit_form, 'observation': observation})
 
 
 def remove_observation(request, id):

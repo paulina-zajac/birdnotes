@@ -3,12 +3,36 @@
 {% block content %}
 
 <section class="section">
-    <div class="container">
+    <div class="container" style="min-height:100vh;">
         <h2 class="text-center section-title">My Bird Notes</h2>
         <p class="text-center section-sub-title">All my birdwatching notes!</p>
 
         <hr class="mx-auto" style="width:10%">
 
+        {% with page=observations %}
+        <nav aria-label="page navigation">
+        <ul class="pagination justify-content-end">
+
+            {% if page.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ page.previous_page_number }} aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+            </li>
+            {% endif %}
+
+            <li class="page-item active">
+            <a class="page-link pagination-item" href="?page={{page}}"> {{ page.number }}</a>
+            </li>
+
+            {% if page.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+            </li>
+            {% endif %}
+        </ul>
+        </nav>
+        {% endwith %}
         <a href="{% url 'birdnotes:add_observation' %}">
             <button class="btn standard-btn text-white">ADD NEW</button>
         </a>

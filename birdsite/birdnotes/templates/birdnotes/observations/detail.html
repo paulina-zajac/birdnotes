@@ -4,8 +4,7 @@
 {% block content %}
 {% load bootstrap5 %}
 
-<!--{% bootstrap_css %}-->
-<!--{% bootstrap_javascript %}-->
+
 <section class="section">
     <div class="container">
         <h2 class="text-center section-title">Observation</h2>
@@ -21,6 +20,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Observation</li>
             </ol>
         </nav>
+
 
         <div class="row g-5 mt-1">
 
@@ -48,6 +48,9 @@
                     <h4>Detailed description</h4>
                     <p>{{observation.description}}</p>
                 </div>
+                <a href="{% url 'birdnotes:observations_list' %}">
+                    <button class="btn standard-btn text-white">BACK</button>
+                </a>
                 <a href="{% url 'birdnotes:edit_observation' observation.id %}">
                     <button class="btn standard-btn text-white">EDIT</button>
                 </a>
