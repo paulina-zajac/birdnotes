@@ -80,3 +80,7 @@ def register(request):
 
 def landing(request):
     return render(request, 'birdnotes/landing.html', {})
+
+
+def about(request):
+    return render(request, 'birdnotes/about.html', {})

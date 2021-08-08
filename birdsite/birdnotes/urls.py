@@ -6,6 +6,7 @@ app_name = 'birdnotes'
 
 urlpatterns = [
     path('', views.landing, name='landing'),
+    path('about', views.about, name='about'),
     path('all', views.observations_list, name='observations_list'),
     path('<int:year>/<int:month>/<int:day>/<slug:observation>/', views.observation_detail, name='observation_detail'),
     path('add_observation/', views.add_observation, name='add_observation'),

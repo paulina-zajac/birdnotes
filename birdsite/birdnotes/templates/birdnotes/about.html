@@ -1,0 +1,33 @@
+{% extends "birdnotes/base.html" %}
+{% load static %}
+{% block title %}Observation{% endblock %}
+{% block content %}
+{% load bootstrap5 %}
+
+<section class="section" style="height:100vh;">
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{% static "images/binoculars.jpg" %}" alt="">
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <div class="text-end">
+            <h2 style="color:#3195bd;">All your <strong>BirdNotes</strong> in one place!</h2>
+            <ul class="text-start my-4">
+                <li class="lead">access at any time</li>
+                <li class="lead">free for everyone</li>
+                <li class="lead">no limits</li>
+            </ul>
+
+            <p class="text-start">
+                Select the species of bird you observed. Enter the details of your observation. Add picture. And that's all!</p>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+</section>
+{% endblock %}
+
