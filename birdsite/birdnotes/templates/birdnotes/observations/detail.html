@@ -20,7 +20,22 @@
                 <li class="breadcrumb-item active" aria-current="page">Observation</li>
             </ol>
         </nav>
-
+        <div class="d-flex justify-content-end">
+        <a href="{% url 'birdnotes:observations_list' %}">
+            <button class="btn light-btn mx-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            BACK
+            </button>
+        </a>
+        <a href="{% url 'birdnotes:edit_observation' observation.id %}">
+            <button class="btn light-btn mx-1">EDIT</button>
+        </a>
+        <a href="{% url 'birdnotes:remove_observation' observation.id %}">
+            <button class="btn btn-outline-danger mx-1">REMOVE</button>
+        </a>
+        </div>
 
         <div class="row g-5 mt-1">
 
@@ -48,15 +63,7 @@
                     <h4>Detailed description</h4>
                     <p>{{observation.description}}</p>
                 </div>
-                <a href="{% url 'birdnotes:observations_list' %}">
-                    <button class="btn standard-btn text-white">BACK</button>
-                </a>
-                <a href="{% url 'birdnotes:edit_observation' observation.id %}">
-                    <button class="btn standard-btn text-white">EDIT</button>
-                </a>
-                <a href="{% url 'birdnotes:remove_observation' observation.id %}">
-                    <button class="btn btn-danger text-white">REMOVE</button>
-                </a>
+                
             </div>
             {% if observation.photo %}
             <div class="col-lg-5">

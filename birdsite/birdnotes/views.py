@@ -38,7 +38,7 @@ def add_observation(request):
             return redirect(observation)
     else:
         form = ObservationForm()
-    return render(request, 'birdnotes/observations/add_observation.html', {'form': form})
+    return render(request, 'birdnotes/observations/add.html', {'form': form})
 
 
 def edit_observation(request, id):
