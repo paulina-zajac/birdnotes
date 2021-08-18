@@ -21,12 +21,14 @@ def observations_list(request):
     return render(request, 'birdnotes/observations/list.html', {'observations': observations})
 
 
+@login_required
 def observation_detail(request, year, month, day, observation):
     observation = get_object_or_404(Observation, slug=observation, time__year=year, time__month=month,
                                     time__day=day)
     return render(request, 'birdnotes/observations/detail.html', {'observation': observation})
 
 
+@login_required
 def add_observation(request):
     if request.method == 'POST':
         form = ObservationForm(request.POST, request.FILES)
@@ -41,6 +43,7 @@ def add_observation(request):
     return render(request, 'birdnotes/observations/add.html', {'form': form})
 
 
+@login_required
 def edit_observation(request, id):
     if request.method == "POST":
         observation = get_object_or_404(Observation, id=id)
@@ -54,6 +57,7 @@ def edit_observation(request, id):
     return render(request, 'birdnotes/observations/edit.html', {'edit_form': edit_form, 'observation': observation})
 
 
+@login_required
 def remove_observation(request, id):
     observation = get_object_or_404(Observation, id=id)
     if request.method == 'POST' and 'remove' in request.POST:
