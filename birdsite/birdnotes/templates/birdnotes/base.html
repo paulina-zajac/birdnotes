@@ -27,10 +27,7 @@
             <a class="nav-link active" aria-current="page" href="{% url 'birdnotes:observations_list' %}">My Bird Notes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'birdnotes:about' %}">About App</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="{% url 'birdnotes:about' %}">About</a>
           </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item dropdown">
