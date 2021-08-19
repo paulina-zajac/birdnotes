@@ -4,3 +4,4 @@ __pycache__
 .idea
 media
 prj_env
+.env
