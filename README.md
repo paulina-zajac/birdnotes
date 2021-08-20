@@ -11,12 +11,21 @@ BirdNotes is an application for keeping bird observations. It allows you to add,
 1. Create python virtual environment and activate it
 1. Install Django
    ```python -m pip install Django```
+1. Migrate and createsuperuser
+    ```cd birdsite```
+    ```python manage.py migrate```
+    ```python manage.py createsuperuser```
+
 1. Run server
     ```python manage.py runserver```
 
 ### Demo
-Checkout live application: 
+Checkout live application: https://birdnotes.herokuapp.com/birdnotes/
 
+
+[list]: https://github.com/paulina-zajac/tree/master/docs/list.jpg"observations list page"
+
+[added]: https://github.com/paulina-zajac/tree/master/docs/add.jpg"observaration page"
 
 ### Contact
 Author: paulina-zajac
