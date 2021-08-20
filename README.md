@@ -23,9 +23,9 @@ BirdNotes is an application for keeping bird observations. It allows you to add,
 Checkout live application: https://birdnotes.herokuapp.com/birdnotes/
 
 
-[list]: https://github.com/paulina-zajac/tree/master/docs/list.jpg"observations list page"
+<img src="https://github.com/paulina-zajac/birdnotes/blob/develop/docs/list.png" height="350">
 
-[added]: https://github.com/paulina-zajac/tree/master/docs/add.jpg"observaration page"
+<img src="https://github.com/paulina-zajac/birdnotes/blob/develop/docs/add.png" height="400">
 
 ### Contact
 Author: paulina-zajac
